@@ -18,7 +18,12 @@ import os
 
 RANGE=10
 
+
 def draw_multi(file_dicts):
+    pic_dir = "../pics/"
+    if not os.path.exists(pic_dir):
+        os.makedirs(pic_dir)
+
     # 1. draw a solid gauge
     gauge = pygal.SolidGauge(half_pie=True, inner_radius=.7)
     gauge.value_formatter = lambda x: '{:.10g}%'.format(x)
@@ -32,7 +37,7 @@ def draw_multi(file_dicts):
                 problem_files_num += 1
         gauge.add(question_name, [{'value': 100 * round(problem_files_num / len(file_index_dict), 2), 'max_value': 100}])
 
-    gauge.render_to_file("./pics/dataGaugeMulti.svg")
+    gauge.render_to_file("../pics/dataGaugeMulti.svg")
 
     # 2. draw a Pyramid
     args = []
@@ -51,9 +56,6 @@ def draw_multi(file_dicts):
     for type, arg in zip(types, args):
         pyramid.add(type, arg)
 
-    pic_dir = "../pics/"
-    if not os.path.exists(pic_dir):
-        os.makedirs(pic_dir)
     pyramid.render_to_file("../pics/dataPyramidMulti.svg")
 
 
