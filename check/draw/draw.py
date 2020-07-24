@@ -4,6 +4,7 @@ from pygal.style import LightColorizedStyle as LCS, LightenStyle as LS
 import random
 
 
+
 def count_range_num(a_list, start, end):
     count = 0
     for ele in a_list:
@@ -77,11 +78,16 @@ def draw(file_index_dict, q_id):
     # pie.render_to_file("C:\\Users\\11381\\Desktop\\dataPie.svg")
     pie.render_to_file(q_dir + "dataPie.svg")
 
+
 if __name__ == "__main__":
-    x_dict = {}
-    i = 0
-    while i < 30:
-        a_double = random.randint(0, 9) / 10 + random.randint(0, 9) / 100 + random.randint(0, 9) / 1000
-        x_dict[str(i)] = a_double
-        i += 1
-    draw(x_dict, 2013)
+    count = 0
+    while count < 20:
+        x_dict = {}
+        i = 0
+        while i < 50:
+            a_double = random.randint(0, 9) / 10 + random.randint(0, 9) / 100 + random.randint(0, 9) / 1000
+            x_dict[str(i)] = a_double
+            i += 1
+        draw(x_dict, random.randint(0, 9) * 1000 + random.randint(0, 9) * 100 + random.randint(0, 9) * 10 + random.randint(0, 9))
+        count += 1
+

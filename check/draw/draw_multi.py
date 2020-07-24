@@ -1,5 +1,6 @@
 import pygal
 import random
+import os
 
 
 # input: dictS of suspect index of MULTIPLE Questions
@@ -50,7 +51,10 @@ def draw_multi(file_dicts):
     for type, arg in zip(types, args):
         pyramid.add(type, arg)
 
-    pyramid.render_to_file("./pics/dataPyramidMulti.svg")
+    pic_dir = "../pics/"
+    if not os.path.exists(pic_dir):
+        os.makedirs(pic_dir)
+    pyramid.render_to_file("../pics/dataPyramidMulti.svg")
 
 
 def random_dict():
