@@ -1,4 +1,5 @@
 import pygal
+import os
 from pygal.style import LightColorizedStyle as LCS, LightenStyle as LS
 import random
 
@@ -14,6 +15,15 @@ def count_range_num(a_list, start, end):
 
 
 def draw(file_index_dict, q_id):
+    # q_id is an int
+    pic_dir = '../pics/'
+    if not os.path.exists(pic_dir):
+        os.makedirs(pic_dir)
+
+    q_dir = pic_dir + str(q_id) + "/"
+    if not os.path.exists(q_dir):
+        os.makedirs(q_dir)
+
     # 1. use pygal to draw a bar of suspect_index (decrease)
     sorted_items = sorted(file_index_dict.items(), key=lambda x: x[1], reverse=True)
 
@@ -41,7 +51,7 @@ def draw(file_index_dict, q_id):
 
     chart.add("Suspect Index:", y_ax)
     # chart.render_to_file("C:\\Users\\11381\\Desktop\\dataBar.svg")
-    chart.render_to_file("./pics/dataBar.svg")
+    chart.render_to_file(q_dir + "dataBar.svg")
 
     # 2. draw a pie of proportion of suspect-index at all levels
     pie = pygal.Pie(inner_radius=.4)
@@ -65,7 +75,7 @@ def draw(file_index_dict, q_id):
     pie.add("0.9 ~ 1.0", round(n_09_10 / n_total * 100, 2))
 
     # pie.render_to_file("C:\\Users\\11381\\Desktop\\dataPie.svg")
-    pie.render_to_file("./pics/dataPie.svg")
+    pie.render_to_file(q_dir + "dataPie.svg")
 
 if __name__ == "__main__":
     x_dict = {}
@@ -74,4 +84,4 @@ if __name__ == "__main__":
         a_double = random.randint(0, 9) / 10 + random.randint(0, 9) / 100 + random.randint(0, 9) / 1000
         x_dict[str(i)] = a_double
         i += 1
-    draw(x_dict, 2133)
+    draw(x_dict, 2013)
