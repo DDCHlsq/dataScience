@@ -4,7 +4,6 @@ from pygal.style import LightColorizedStyle as LCS, LightenStyle as LS
 import random
 
 
-
 def count_range_num(a_list, start, end):
     count = 0
     for ele in a_list:
@@ -13,6 +12,13 @@ def count_range_num(a_list, start, end):
         elif end == 1 and ele == 1:
             count += 1
     return count
+
+
+# input:
+# first position parameter: {CodeFileName: SuspectIndex, "xxx.py": 0.87, ...}
+# second position parameter: Question ID
+
+# output: .svg visual file
 
 
 def draw(file_index_dict, q_id):
@@ -68,7 +74,7 @@ def draw(file_index_dict, q_id):
     n_total = len(y_ax)
 
     pie.add("0.0 ~ 0.1", round(n_00_01 / n_total * 100, 2))
-    pie.add("0.1 ~ 0.3", round(n_01_03 / n_total * 100,2))
+    pie.add("0.1 ~ 0.3", round(n_01_03 / n_total * 100, 2))
     pie.add("0.3 ~ 0.5", round(n_03_05 / n_total * 100, 2))
     pie.add("0.5 ~ 0.7", round(n_05_07 / n_total * 100, 2))
     pie.add("0.7 ~ 0.8", round(n_07_08 / n_total * 100, 2))
@@ -88,6 +94,7 @@ if __name__ == "__main__":
             a_double = random.randint(0, 9) / 10 + random.randint(0, 9) / 100 + random.randint(0, 9) / 1000
             x_dict[str(i)] = a_double
             i += 1
-        draw(x_dict, random.randint(0, 9) * 1000 + random.randint(0, 9) * 100 + random.randint(0, 9) * 10 + random.randint(0, 9))
+        draw(x_dict,
+             random.randint(0, 9) * 1000 + random.randint(0, 9) * 100 + random.randint(0, 9) * 10 + random.randint(0,
+                                                                                                                   9))
         count += 1
-
