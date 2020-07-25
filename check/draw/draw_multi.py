@@ -4,17 +4,17 @@ import os
 
 
 # input: dictS of suspect index of MULTIPLE Questions
-# file_dicts:
-# {
-#     Question_name_0: {
-#         "111.py": 0.111,
-#         "222.py": 0.222,
-#     },
-#     Question_name_1: {
-#         ....
-#     },
-#     .....
-# }
+file_dicts:
+{
+    Question_name_0: {
+        "111.py": 0.111,
+        "222.py": 0.222,
+    },
+    Question_name_1: {
+        ....
+    },
+    .....
+}
 
 RANGE=10
 

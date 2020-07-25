@@ -34,7 +34,7 @@ if __name__=='__main__':
     #     print(bad_code)
     #     testId = input()
 
-    # draw(check(testId),testId)
+    draw(check(testId),testId)
     tests=getMultiDict(testList)
     print(tests)
     draw_multi(tests)
